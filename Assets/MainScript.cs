@@ -18,13 +18,67 @@ public abstract class Device
 
 }
 
-public class Weapon: Device
+public class ScientificDevice : Device
+{
+    public int TimeFiring;
+    public int LeiderShips;
+    public override void Fire()
+    {
+
+    }
+    public ScientificDevice(GameObject device, string imja, string opisanie, int HP, bool firing, int dlitelnost, int korabli)
+    {
+        imja = label;
+        opisanie = description;
+        device = unityDevice;
+        device = unityShip;
+        max_hp = HP;
+        hp = HP;
+        is_firing = firing;
+        TimeFiring = dlitelnost;
+        LeiderShips = korabli;
+    }
+}
+public class SuperWeapon : Device
+{
+    public bool used = false;
+    public override void Fire()
+    {
+
+    }
+    public SuperWeapon(GameObject SuperWeapon, int HP, string imja, string opisanie, bool use, bool firing)
+    {
+        SuperWeapon = unityShip;
+        SuperWeapon = unityDevice;
+        is_firing = firing;
+        use = used;
+        imja = label;
+        opisanie = description;
+        max_hp = HP;
+        hp = HP;
+        energy_usage = 0;
+    }
+}
+
+public class Weapon : Device
 {
     public int w_range;
 
     public override void Fire()
     {
         throw new NotImplementedException();
+    }
+    public Weapon(GameObject Weapon, int HP, string imja, string opisanie, int range, int energy)
+    {
+        range = w_range;
+        Weapon = unityShip;
+        Weapon = unityDevice;
+        is_firing = firing;
+        imja = label;
+        opisanie = description;
+        max_hp = HP;
+        hp = HP;
+        energy = energy_usage; s
     }
 }
 
