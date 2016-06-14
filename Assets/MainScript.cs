@@ -68,7 +68,7 @@ public class Weapon : Device
     {
         throw new NotImplementedException();
     }
-    public Weapon(GameObject Weapon, int HP, string imja, string opisanie, int range, int energy)
+    public Weapon(GameObject Weapon, int HP, string imja, string opisanie, int range, int energy, bool firing)
     {
         range = w_range;
         Weapon = unityShip;
@@ -78,7 +78,7 @@ public class Weapon : Device
         opisanie = description;
         max_hp = HP;
         hp = HP;
-        energy = energy_usage; s
+        energy = energy_usage;
     }
 }
 
