@@ -8,9 +8,8 @@ public class enemyScript : MonoBehaviour
     public int W;
     GameObject cont;
     MainScript ms;
-    public int rangemy; // досигаемость оружия игрока
-    public int renge; // досигаемость оружия бота
-                      // Use this for initialization
+    public int rangemy;
+    public int renge;
     void Start()
     {
         H = Screen.height;
@@ -21,13 +20,12 @@ public class enemyScript : MonoBehaviour
 
     void Update()
     {
-        rangemy = 0;
+        //Fighter bot
         float xy = 0;
         Spaceship s1 = (Spaceship)ms.my_ships[0];
         float x1 = s1.position.x;
         float y1 = s1.position.y;
         double nr1 = s1.new_rotation.z;
-        double r1 = System.Math.Asin(x1 / (x1 * x1) + (y1 * y1));
         Weapon d11 = (Weapon)s1.weapons[0];
         int d11_t = d11.d_type;
         float rg11 = d11.w_range;
@@ -45,6 +43,14 @@ public class enemyScript : MonoBehaviour
         Weapon d22 = (Weapon)s2.weapons[1];
         int d22_t = d22.d_type;
         float rg22 = d22.w_range;
+        if(x1 > x2)
+        {
+            double r1 = System.Math.Asin((x1 - x2) / (x1 * x1) + (y1 * y1));
+        }
+        else
+        {
+            double r1 = System.Math.Asin((x2 - x1) / (x1 * x1) + (y1 * y1));
+        }
         if (x1 > x2)
         {
             if (y1 > y2)
@@ -225,5 +231,13 @@ public class enemyScript : MonoBehaviour
             d21.is_firing = true;
             d22.is_firing = true;
         }
+
+        //Frigate bot
+        Spaceship s3 = (Spaceship)ms.my_ships[1];
+        float x3 = s3.position.x;
+        float y3 = s3.position.y;
+        Spaceship s4 = (Spaceship)ms.enemy_ships[1];
+        float x4 = s4.position.x;
+        float y4 = s4.position.y;  
     }
 }
